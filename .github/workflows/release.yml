@@ -1,0 +1,80 @@
+name: Release Packages to npm and PyPI
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  # ------------------------------------------------------------
+  # 1. Publish all @meromiti/* packages to npm
+  # ------------------------------------------------------------
+  publish-npm:
+    name: Publish to npm
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Publish @meromiti packages to npm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          echo "Publishing @meromiti/core..."
+          npm publish packages/core --access public
+
+          echo "Publishing @meromiti/web..."
+          npm publish packages/web --access public
+
+          echo "Publishing @meromiti/react..."
+          npm publish packages/react --access public
+
+          echo "Publishing @meromiti/vue..."
+          npm publish packages/vue --access public
+
+          echo "Publishing @meromiti/angular..."
+          npm publish packages/angular --access public
+
+          echo "Publishing @meromiti/react-native..."
+          npm publish packages/react-native --access public
+
+  # ------------------------------------------------------------
+  # 2. Publish mero-miti to PyPI
+  # ------------------------------------------------------------
+  publish-pypi:
+    name: Publish to PyPI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install build tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install build twine
+
+      - name: Build distributions (wheel & sdist)
+        run: |
+          cd packages/python
+          python -m build
+          python -m twine check dist/*
+
+      - name: Upload to PyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+          cd packages/python
+          python -m twine upload dist/* --non-interactive
