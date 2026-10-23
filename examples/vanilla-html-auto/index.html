@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mero Miti (मेरो मिति) - Web & Vanilla HTML (Auto Mode)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #d1d5db;
+      --primary: #10b981;
+      --primary-hover: #059669;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', 'Mukta', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 30px 20px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .container { max-width: 880px; margin: 0 auto; }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .brand-badge {
+      background: #ecfdf5;
+      color: #059669;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 9999px;
+      font-weight: 600;
+    }
+
+    .theme-toggle-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    .info-banner {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e40af;
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+      font-size: 14px;
+    }
+
+    [data-theme="dark"] .info-banner {
+      background: #172554;
+      border-color: #1e3a8a;
+      color: #93c5fd;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      margin-bottom: 24px;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group > label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .form-group .hint {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Standard HTML5 Date Input */
+    input[type="date"], input[type="text"].custom-input {
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 14px;
+      background: var(--card-bg);
+      color: var(--text);
+      outline: none;
+      font-family: inherit;
+      height: 38px;
+      box-sizing: border-box;
+      vertical-align: middle;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    input[type="date"]:focus, input[type="text"].custom-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-hover); }
+    .btn-secondary { background: var(--card-bg); border: 1px solid var(--border); color: var(--text); }
+    .btn-secondary:hover { background: var(--bg); }
+
+    .console-box {
+      background: #020617;
+      color: #38bdf8;
+      font-family: 'Consolas', monospace;
+      font-size: 12px;
+      padding: 16px;
+      border-radius: 8px;
+      height: 140px;
+      overflow-y: auto;
+      margin-top: 10px;
+    }
+
+    .code-pill {
+      background: #f1f5f9;
+      color: #0f172a;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 12px;
+    }
+    [data-theme="dark"] .code-pill {
+      background: #334155;
+      color: #f8fafc;
+    }
+  </style>
+
+  <!-- ========================================================================= -->
+  <!-- 🚀 ZERO-CONFIG AUTO MODE DROP-IN SCRIPT                                   -->
+  <!-- Notice data-mero-miti-auto="true" and data-mero-miti-auto-sync="true"!   -->
+  <!-- NO manual JavaScript calls (no MeroMiti.attach) required anywhere!        -->
+  <!-- ========================================================================= -->
+  <script 
+    src="../../packages/web/dist/mero-miti.js" 
+    data-mero-miti-auto="true" 
+    data-mero-miti-auto-sync="true"
+  ></script>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="brand-title">
+      <span>Mero Miti (मेरो मिति)</span>
+      <span class="brand-badge">Vanilla HTML Auto Mode v1.3.0</span>
+    </div>
+    <button class="theme-toggle-btn" id="themeToggle" type="button">🌓 Toggle Theme</button>
+  </header>
+
+  <div class="info-banner">
+    <strong>Zero-JavaScript Setup:</strong> The script tag in the <code>&lt;head&gt;</code> has <code>data-mero-miti-auto="true"</code>. 
+    Every standard <code>&lt;input type="date"&gt;</code> in the HTML form below automatically receives a synchronized Bikram Sambat companion picker, without writing a single line of JavaScript!
+  </div>
+
+  <!-- Standard Vanilla HTML Form -->
+  <form id="sampleForm" action="#" method="GET">
+    <div class="card">
+      <div class="card-title">
+        <span>Standard HTML5 Form Fields</span>
+        <span class="brand-badge">Auto-Detected</span>
+      </div>
+      <p class="card-desc">
+        Interact with any Gregorian or Nepali date input. They are bidirectional and automatically generate companion form fields for backend submission.
+      </p>
+
+      <!-- Field 1: Default Nepali Mode -->
+      <div class="form-group">
+        <label for="dob">1. जन्म मिति (Date of Birth) — Default Nepali (वि.सं.):</label>
+        <input 
+          type="date" 
+          id="dob" 
+          name="dob" 
+          value="2024-09-04" 
+        />
+        <div class="hint">Companion auto-derives input name <code>name="dob_bs"</code> for seamless backend POST.</div>
+      </div>
+
+      <!-- Field 2: English B.S. Mode -->
+      <div class="form-group">
+        <label for="invoice_date">2. Invoice Date — English Digits & B.S. Badge:</label>
+        <input 
+          type="date" 
+          id="invoice_date" 
+          name="invoice_date" 
+          value="2023-04-14" 
+          data-mero-miti-locale="en" 
+          data-mero-miti-format="YYYY-MM-DD"
+        />
+        <div class="hint">Configured via <code>data-mero-miti-locale="en"</code> and <code>data-mero-miti-format="YYYY-MM-DD"</code>.</div>
+      </div>
+
+      <!-- Field 3: Bottom Positioned Companion -->
+      <div class="form-group">
+        <label for="joining_date">3. Employment Date — Stacked Layout:</label>
+        <input 
+          type="date" 
+          id="joining_date" 
+          name="joining_date" 
+          data-mero-miti-position="bottom" 
+        />
+        <div class="hint">Configured via <code>data-mero-miti-position="bottom"</code> to mount directly below.</div>
+      </div>
+
+      <!-- Field 4: Opt-out (Ignored Field) -->
+      <div class="form-group">
+        <label for="passport_expiry">4. Passport Expiry (Opt-Out / Standard Date Input):</label>
+        <input 
+          type="date" 
+          id="passport_expiry" 
+          name="passport_expiry" 
+          data-mero-miti="false" 
+        />
+        <div class="hint">Has <code>data-mero-miti="false"</code> so Mero Miti leaves it alone as a plain HTML5 date input.</div>
+      </div>
+
+      <!-- Field 5: Disabled / Readonly Mirroring -->
+      <div class="form-group">
+        <label for="archived_date">5. Archived Record Date (Disabled State):</label>
+        <input 
+          type="date" 
+          id="archived_date" 
+          name="archived_date" 
+          value="2020-01-01" 
+          disabled 
+        />
+        <div class="hint">The companion input automatically inherits the <code>disabled</code> state and locks interactions.</div>
+      </div>
+
+      <!-- Container for dynamically injected inputs -->
+      <div id="dynamicFieldsContainer"></div>
+
+      <div style="display: flex; gap: 10px; margin-top: 24px; flex-wrap: wrap;">
+        <button type="submit" class="btn btn-primary">📤 Test Form Submission</button>
+        <button type="reset" class="btn btn-secondary">🔄 Reset Form</button>
+        <button type="button" class="btn btn-secondary" id="btnAddDynamicField">➕ Add Dynamic Date Field (MutationObserver Test)</button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Live Submission / Event Console -->
+  <div class="card">
+    <div class="card-title">
+      <span>Native Form Payload Inspector</span>
+    </div>
+    <p class="card-desc">
+      When the form is submitted, notice how both the standard Gregorian inputs and the Mero Miti companion inputs (e.g. <code>dob_bs</code>) are sent together in the native FormData payload:
+    </p>
+    <pre class="console-box" id="formPayloadConsole">Click "Test Form Submission" above to inspect the submitted FormData payload...</pre>
+  </div>
+</div>
+
+<script>
+  // Theme Toggle
+  const themeBtn = document.getElementById('themeToggle');
+  themeBtn.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+  });
+
+  // Form Submit Inspector (Intercepted to display payload on screen)
+  const form = document.getElementById('sampleForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const entries = {};
+    for (const [key, value] of formData.entries()) {
+      entries[key] = value;
+    }
+    const consoleBox = document.getElementById('formPayloadConsole');
+    consoleBox.textContent = JSON.stringify(entries, null, 2);
+  });
+
+  // MutationObserver Live Test: Dynamically append a new date field to prove auto-detection
+  let dynamicCount = 1;
+  document.getElementById('btnAddDynamicField').addEventListener('click', () => {
+    const container = document.getElementById('dynamicFieldsContainer');
+    const fieldId = `dynamic_date_${dynamicCount++}`;
+    const group = document.createElement('div');
+    group.className = 'form-group';
+    group.style.borderTop = '1px dashed var(--border)';
+    group.style.paddingTop = '15px';
+    group.innerHTML = `
+      <label for="${fieldId}">Dynamically Injected Field #${dynamicCount - 1}:</label>
+      <input type="date" id="${fieldId}" name="${fieldId}" value="2025-01-01" />
+      <div class="hint">Inserted via DOM manipulation at runtime. MutationObserver automatically attached Mero Miti!</div>
+    `;
+    container.appendChild(group);
+  });
+</script>
+
+</body>
+</html>

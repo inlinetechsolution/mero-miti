@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@mero-miti/core": ["packages/core/src/index.ts"],
+      "@mero-miti/web": ["packages/web/src/index.ts"],
+      "@mero-miti/web/*": ["packages/web/src/*"],
+      "@mero-miti/react": ["packages/react/src/index.ts"],
+      "@mero-miti/vue": ["packages/vue/src/index.ts"],
+      "@mero-miti/angular": ["packages/angular/src/public-api.ts"],
+      "@mero-miti/react-native": ["packages/react-native/src/index.ts"]
+    }
+  },
+  "include": [
+    "packages/**/*"
+  ]
+}

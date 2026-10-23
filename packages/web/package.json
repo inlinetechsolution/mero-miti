@@ -1,0 +1,39 @@
+{
+  "name": "@mero-miti/web",
+  "version": "1.0.0",
+  "description": "Zero-dependency drop-in browser script, modal picker, and companion bridge for Bikram Sambat date picking.",
+  "main": "dist/mero-miti.js",
+  "module": "src/index.ts",
+  "types": "src/index.ts",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "default": "./dist/mero-miti.js"
+    },
+    "./companion-bridge": "./src/companion-bridge.ts",
+    "./calendar-popover": "./src/calendar-popover.ts",
+    "./styles": "./src/styles.ts",
+    "./icons": "./src/icons.ts"
+  },
+  "dependencies": {
+    "@mero-miti/core": "workspace:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inlinetechsolution/mero-miti.git",
+    "directory": "packages/web"
+  },
+  "homepage": "https://github.com/inlinetechsolution/mero-miti#readme",
+  "bugs": {
+    "url": "https://github.com/inlinetechsolution/mero-miti/issues"
+  },
+  "keywords": [
+    "nepali-calendar",
+    "bikram-sambat",
+    "datepicker",
+    "companion-bridge",
+    "browser"
+  ],
+  "author": "Inline Tech Solution <contact@meromiti.com> (https://inlinetech.com.np)",
+  "license": "MIT"
+}

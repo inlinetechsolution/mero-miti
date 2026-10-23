@@ -1,0 +1,34 @@
+{
+  "name": "@mero-miti/react",
+  "version": "1.0.0",
+  "description": "React and Next.js Bikram Sambat Nepali date picker components, hooks, and companion bridge.",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "types": "src/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inlinetechsolution/mero-miti.git",
+    "directory": "packages/react"
+  },
+  "homepage": "https://github.com/inlinetechsolution/mero-miti#readme",
+  "bugs": {
+    "url": "https://github.com/inlinetechsolution/mero-miti/issues"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "dependencies": {
+    "@mero-miti/core": "workspace:*",
+    "@mero-miti/web": "workspace:*"
+  },
+  "keywords": [
+    "react",
+    "nextjs",
+    "nepali-calendar",
+    "bikram-sambat",
+    "date-picker"
+  ],
+  "author": "Inline Tech Solution <contact@meromiti.com> (https://inlinetech.com.np)",
+  "license": "MIT"
+}

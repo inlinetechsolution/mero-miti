@@ -1,0 +1,39 @@
+{
+  "name": "mero-miti-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Universal Bikram Sambat (B.S.) Nepali calendar engine and cross-platform date picker ecosystem.",
+  "workspaces": [
+    "packages/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inlinetechsolution/mero-miti.git"
+  },
+  "homepage": "https://github.com/inlinetechsolution/mero-miti#readme",
+  "bugs": {
+    "url": "https://github.com/inlinetechsolution/mero-miti/issues"
+  },
+  "scripts": {
+    "test": "node scripts/test-all.js",
+    "encode-year": "node scripts/encode-year.js"
+  },
+  "keywords": [
+    "mero-miti",
+    "nepali-calendar",
+    "bikram-sambat",
+    "bs-date",
+    "date-picker",
+    "react",
+    "vue",
+    "angular",
+    "flutter",
+    "android",
+    "ios",
+    "python",
+    "php",
+    "dotnet"
+  ],
+  "author": "Inline Tech Solution <contact@meromiti.com> (https://inlinetech.com.np)",
+  "license": "MIT"
+}

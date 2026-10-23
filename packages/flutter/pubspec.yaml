@@ -1,0 +1,20 @@
+name: mero_miti
+description: A lightweight, vendor-friendly Nepali (Bikram Sambat) date picker, converter, and calendar library for Flutter.
+version: 1.0.0
+homepage: https://github.com/inlinetechsolution/mero-miti
+repository: https://github.com/inlinetechsolution/mero-miti
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:

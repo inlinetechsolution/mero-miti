@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mero Miti (मेरो मिति) - Pixel-Perfect Baseline Alignment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #d1d5db;
+      --accent: #10b981;
+      --accent-hover: #059669;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', 'Mukta', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 30px 20px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .container { max-width: 960px; margin: 0 auto; }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .brand-badge {
+      background: #ecfdf5;
+      color: #059669;
+      font-size: 12px;
+      padding: 3px 8px;
+      border-radius: 9999px;
+      font-weight: 600;
+    }
+
+    .theme-toggle-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group > label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    /* Target inputs in vendor forms */
+    .vendor-input {
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 14px;
+      background: var(--card-bg);
+      color: var(--text);
+      outline: none;
+      font-family: inherit;
+      height: 38px;
+      box-sizing: border-box;
+      vertical-align: middle;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .vendor-input:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    }
+
+    .console-box {
+      background: #020617;
+      color: #38bdf8;
+      font-family: 'Consolas', monospace;
+      font-size: 12px;
+      padding: 16px;
+      border-radius: 10px;
+      height: 160px;
+      overflow-y: auto;
+      margin-top: 10px;
+    }
+
+    .log-item { margin-bottom: 4px; display: flex; gap: 8px; }
+    .log-time { color: #64748b; }
+    .log-event { color: #f43f5e; font-weight: bold; }
+    .log-val { color: #10b981; }
+
+    .action-btn {
+      background: #10b981;
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .action-btn:hover { background: #059669; }
+  </style>
+
+  <!-- Load Mero Miti Standalone Web Bundle -->
+  <script src="../../packages/web/dist/mero-miti.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="brand-title">
+      <img src="./day-31.webp" alt="Mero Miti Logo" style="width: 34px; height: 34px; border-radius: 6px; vertical-align: middle;" />
+      <span>Mero Miti (मेरो मिति)</span>
+      <span class="brand-badge">Official Brand Icon v1.3.0</span>
+    </div>
+    <button class="theme-toggle-btn" id="themeToggle">🌓 Toggle Theme</button>
+  </header>
+
+  <!-- Showcase Cards -->
+  <div class="grid">
+    <!-- Card 1: Nepali Mode (Pixel-perfect baseline) -->
+    <div class="card">
+      <div class="card-title">
+        <span>1. नेपाली ढाँचा (Nepali Mode)</span>
+        <span class="brand-badge">वि.सं. Inline Badge</span>
+      </div>
+      <p class="card-desc">
+        Notice how both inputs share the exact same top & bottom baseline with zero vertical staggering!
+      </p>
+
+      <div class="form-group">
+        <label>जन्म मिति (Date of Birth):</label>
+        <!-- Gregorian input (Vendor) -->
+        <input 
+          type="date" 
+          id="dob_nepali_field" 
+          class="vendor-input" 
+          value="2024-09-04" 
+        />
+        <!-- Mero Miti companion will mount right here on the same baseline -->
+      </div>
+
+      <p style="font-size: 12px; color: var(--text-muted); margin-top: 15px;">
+        ✨ Notice the sleek <code>[वि.सं.]</code> badge neatly tucked inside the companion input with no messy top labels!
+      </p>
+    </div>
+
+    <!-- Card 2: English Mode (Pixel-perfect baseline) -->
+    <div class="card">
+      <div class="card-title">
+        <span>2. English Mode (B.S. in English)</span>
+        <span class="brand-badge">B.S. Inline Badge</span>
+      </div>
+      <p class="card-desc">
+        English digits & months, with a built-in <code>[B.S.]</code> badge and identical height & corner radius.
+      </p>
+
+      <div class="form-group">
+        <label>Invoice / Transaction Date:</label>
+        <input 
+          type="date" 
+          id="invoice_english_field" 
+          class="vendor-input" 
+          value="2023-04-14" 
+        />
+      </div>
+
+      <p style="font-size: 12px; color: var(--text-muted); margin-top: 15px;">
+        💡 Pre-configured with <code>locale: 'en'</code>. Click the calendar icon to switch language on the fly.
+      </p>
+    </div>
+  </div>
+
+  <!-- Card 3: Dynamic Year Extension & Strict Validation -->
+  <div class="card" style="margin-bottom: 30px;">
+    <div class="card-title">
+      <span>3. Dynamic Future Year Registration & Validation</span>
+    </div>
+    <p class="card-desc">
+      When official calendars are published by Nepal Panchanga Nirnayak Samiti, vendors can inject future years on the fly without upgrading packages.
+    </p>
+
+    <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 15px;">
+      <button class="action-btn" id="btnRegister2095">Register Official Year 2095 BS</button>
+      <span id="registerStatus" style="font-size: 13px; font-weight: 600; color: #10b981;"></span>
+    </div>
+
+    <p style="font-size: 12px; color: var(--text-muted);">
+      ⚠️ <strong>Strict BS Calendar Validation:</strong> Try typing <code>32/01/2081</code> in any Nepali field. Since 2081 Baishakh has only 31 days, it will shake with a red border and display an inline warning!
+    </p>
+  </div>
+
+  <!-- Live Vendor Form Event Monitor -->
+  <div class="card">
+    <div class="card-title">
+      <span>Live Event Monitor (Proof of Non-Destructive Reactivity)</span>
+    </div>
+    <p class="card-desc">
+      Whenever the user interacts with Mero Miti, native synthetic events (<code>input</code> & <code>change</code>) are dispatched to the vendor's fields so Formik, React Hook Form, and Angular detect them immediately:
+    </p>
+    <div class="console-box" id="eventConsole">
+      <div class="log-item"><span class="log-time">[Ready]</span> Mero Miti initialized. Listening for vendor field events...</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function logEvent(elementId, eventName, value) {
+    const consoleBox = document.getElementById('eventConsole');
+    const time = new Date().toLocaleTimeString();
+    const item = document.createElement('div');
+    item.className = 'log-item';
+    item.innerHTML = `<span class="log-time">[${time}]</span> <span class="log-event">${eventName}</span> on <span style="color:#f59e0b">#${elementId}</span> -> Value: <span class="log-val">"${value}"</span>`;
+    consoleBox.insertBefore(item, consoleBox.firstChild);
+  }
+
+  const nepaliField = document.getElementById('dob_nepali_field');
+  const englishField = document.getElementById('invoice_english_field');
+
+  ['input', 'change'].forEach(evt => {
+    nepaliField.addEventListener(evt, () => logEvent('dob_nepali_field', evt, nepaliField.value));
+    englishField.addEventListener(evt, () => logEvent('invoice_english_field', evt, englishField.value));
+  });
+
+  // 1. Attach Field 1 in Nepali Locale (वि.सं.) without extra top label for perfect vertical baseline alignment
+  MeroMiti.attach('#dob_nepali_field', {
+    format: 'DD/MM/YYYY',
+    locale: 'ne',
+    numeral: 'ne',
+    position: 'right'
+  });
+
+  // 2. Attach Field 2 in English Locale (B.S.)
+  MeroMiti.attach('#invoice_english_field', {
+    format: 'DD/MM/YYYY',
+    locale: 'en',
+    numeral: 'en',
+    position: 'right'
+  });
+
+  // 3. Dynamic Year Registration
+  document.getElementById('btnRegister2095').addEventListener('click', () => {
+    MeroMiti.registerYear(2095, "bba445");
+    const status = document.getElementById('registerStatus');
+    status.textContent = '✔ Year 2095 BS registered with custom month days!';
+    const item = document.createElement('div');
+    item.className = 'log-item';
+    item.innerHTML = `<span class="log-time">[Registered]</span> MeroMiti.registerYear(2095, "bba445") dynamically loaded!`;
+    document.getElementById('eventConsole').insertBefore(item, document.getElementById('eventConsole').firstChild);
+  });
+
+  // 4. Theme Toggle
+  const themeBtn = document.getElementById('themeToggle');
+  themeBtn.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+  });
+</script>
+
+</body>
+</html>

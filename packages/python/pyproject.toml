@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mero-miti"
+version = "1.0.0"
+authors = [
+  { name="Inline Tech Solution", email="contact@meromiti.com" },
+]
+description = "Universal Bikram Sambat (B.S.) Nepali calendar engine & date converter for Python, Django, and FastAPI."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Localization",
+]
+keywords = ["nepali", "calendar", "bikram-sambat", "date-picker", "django", "fastapi"]
+
+[project.optional-dependencies]
+django = ["django>=3.2"]
+pydantic = ["pydantic>=1.8"]
+all = ["django>=3.2", "pydantic>=1.8"]
+
+[project.urls]
+Homepage = "https://github.com/inlinetechsolution/mero-miti"
+Repository = "https://github.com/inlinetechsolution/mero-miti"
+Issues = "https://github.com/inlinetechsolution/mero-miti/issues"

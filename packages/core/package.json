@@ -1,0 +1,27 @@
+{
+  "name": "@mero-miti/core",
+  "version": "1.0.0",
+  "description": "Ultra-lightweight (< 1 KB) Bikram Sambat (B.S.) Nepali calendar engine, 24-bit bitmask compression, and AD/BS converter.",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "types": "src/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inlinetechsolution/mero-miti.git",
+    "directory": "packages/core"
+  },
+  "homepage": "https://github.com/inlinetechsolution/mero-miti#readme",
+  "bugs": {
+    "url": "https://github.com/inlinetechsolution/mero-miti/issues"
+  },
+  "keywords": [
+    "nepali-calendar",
+    "bikram-sambat",
+    "bs-converter",
+    "nepali-date",
+    "nepal",
+    "ad-to-bs"
+  ],
+  "author": "Inline Tech Solution <contact@meromiti.com> (https://inlinetech.com.np)",
+  "license": "MIT"
+}

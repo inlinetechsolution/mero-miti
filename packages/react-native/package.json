@@ -1,0 +1,25 @@
+{
+  "name": "@mero-miti/react-native",
+  "version": "1.0.0",
+  "description": "Native Nepali Bikram Sambat Date Picker for React Native and Expo apps.",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inlinetechsolution/mero-miti.git",
+    "directory": "packages/react-native"
+  },
+  "homepage": "https://github.com/inlinetechsolution/mero-miti#readme",
+  "bugs": {
+    "url": "https://github.com/inlinetechsolution/mero-miti/issues"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-native": ">=0.64.0"
+  },
+  "dependencies": {
+    "@mero-miti/core": "workspace:*"
+  },
+  "author": "Inline Tech Solution <contact@meromiti.com> (https://inlinetech.com.np)",
+  "license": "MIT"
+}
