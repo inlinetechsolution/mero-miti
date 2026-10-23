@@ -7,8 +7,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 *.egg-info/
-dist/python/
-build/python/
+dist/
+build/
 
 # .NET / C#
 bin/
