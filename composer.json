@@ -1,0 +1,38 @@
+{
+  "name": "meromiti/meromiti",
+  "description": "Universal Bikram Sambat (B.S.) Nepali calendar engine and date converter for PHP & Laravel.",
+  "type": "library",
+  "license": "MIT",
+  "homepage": "https://meromiti.com",
+  "support": {
+    "issues": "https://github.com/inlinetechsolution/mero-miti/issues",
+    "source": "https://github.com/inlinetechsolution/mero-miti"
+  },
+  "authors": [
+    {
+      "name": "Inline Tech Solution",
+      "email": "contact@meromiti.com",
+      "homepage": "https://inlinetech.com.np"
+    }
+  ],
+  "require": {
+    "php": ">=7.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "MeroMiti\\": "packages/php/src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "MeroMiti\\Tests\\": "packages/php/tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "MeroMiti\\Laravel\\MeroMitiServiceProvider"
+      ]
+    }
+  }
+}

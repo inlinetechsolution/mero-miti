@@ -1,5 +1,5 @@
 {
-  "name": "mero-miti/php",
+  "name": "meromiti/meromiti",
   "description": "Universal Bikram Sambat (B.S.) Nepali calendar engine and date converter for PHP & Laravel.",
   "type": "library",
   "license": "MIT",

@@ -4,7 +4,7 @@
   </a>
 </p>
 
-# Mero Miti PHP & Laravel (`mero-miti/php`)
+# Mero Miti PHP & Laravel (`meromiti/meromiti`)
 
 Official **Mero Miti (मेरो मिति)** library for PHP and Laravel applications. Features ultra-compressed 24-bit Bikram Sambat calendar data (< 1 KB), bidirectional AD $\leftrightarrow$ BS conversions, runtime dynamic year registration, and Laravel validation rules.
 
@@ -13,7 +13,7 @@ Official **Mero Miti (मेरो मिति)** library for PHP and Laravel a
 ## 📦 Installation
 
 ```bash
-composer require mero-miti/php
+composer require meromiti/meromiti
 ```
 
 ---
