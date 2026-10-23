@@ -1,4 +1,4 @@
-name: Release Packages to npm and PyPI
+name: Release Packages (npm, PyPI, NuGet)
 
 on:
   push:
@@ -78,3 +78,31 @@ jobs:
         run: |
           cd packages/python
           python -m twine upload dist/* --non-interactive
+
+  # ------------------------------------------------------------
+  # 3. Publish MeroMiti to NuGet
+  # ------------------------------------------------------------
+  publish-nuget:
+    name: Publish to NuGet
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8.0
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Pack NuGet package
+        run: |
+          dotnet pack packages/dotnet/MeroMiti.csproj -c Release -o packages/dotnet/bin
+
+      - name: Push to NuGet
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: |
+          dotnet nuget push packages/dotnet/bin/*.nupkg \
+            --api-key "${NUGET_API_KEY}" \
+            --source https://api.nuget.org/v3/index.json \
+            --skip-duplicate
