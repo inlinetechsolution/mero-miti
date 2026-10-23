@@ -14,7 +14,14 @@
     <RepositoryUrl>https://github.com/inlinetechsolution/mero-miti.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>nepali;calendar;bikram-sambat;date;datepicker;aspnetcore</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\assets\logo.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="tests\**" />
