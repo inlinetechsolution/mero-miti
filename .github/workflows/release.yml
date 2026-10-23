@@ -80,11 +80,14 @@ jobs:
           python -m twine upload dist/* --non-interactive
 
   # ------------------------------------------------------------
-  # 3. Publish MeroMiti to NuGet
+  # 3. Publish MeroMiti to NuGet (Keyless Trusted Publishing OIDC)
   # ------------------------------------------------------------
   publish-nuget:
     name: Publish to NuGet
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -98,11 +101,11 @@ jobs:
         run: |
           dotnet pack packages/dotnet/MeroMiti.csproj -c Release -o packages/dotnet/bin
 
-      - name: Push to NuGet
-        env:
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+      - name: Authenticate with NuGet Trusted Publishing (OIDC)
+        uses: NuGet/login@v1
+
+      - name: Push to NuGet.org
         run: |
           dotnet nuget push packages/dotnet/bin/*.nupkg \
-            --api-key "${NUGET_API_KEY}" \
             --source https://api.nuget.org/v3/index.json \
             --skip-duplicate
