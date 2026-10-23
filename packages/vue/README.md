@@ -1,10 +1,10 @@
-<p align="center">
+﻿<p align="center">
   <a href="https://meromiti.com" target="_blank" rel="noopener noreferrer">
     <img src="https://meromiti.com/app-icon.png" width="80" height="80" alt="Mero Miti Logo" style="border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
   </a>
 </p>
 
-# Mero Miti Vue 3 (`@mero-miti/vue`)
+# Mero Miti Vue 3 (`@meromiti/vue`)
 
 Official **Mero Miti (मेरो मिति)** date picker component for Vue 3 and Nuxt applications. Features two-way `v-model` binding, live masking, strict B.S. calendar validation, and automatic Gregorian synchronization.
 
@@ -13,9 +13,9 @@ Official **Mero Miti (मेरो मिति)** date picker component for Vue
 ## 📦 Installation
 
 ```bash
-npm install @mero-miti/vue
+npm install @meromiti/vue
 # or
-pnpm add @mero-miti/vue
+pnpm add @meromiti/vue
 ```
 
 ---
@@ -26,7 +26,7 @@ pnpm add @mero-miti/vue
 In your `main.ts` or `main.js`:
 ```typescript
 import { createApp } from 'vue';
-import { MeroMitiPlugin } from '@mero-miti/vue';
+import { MeroMitiPlugin } from '@meromiti/vue';
 import App from './App.vue';
 
 const app = createApp(App);
@@ -38,7 +38,7 @@ app.mount('#app');
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue';
-import { MeroMitiPicker } from '@mero-miti/vue';
+import { MeroMitiPicker } from '@meromiti/vue';
 
 const nepaliDate = ref('2081/05/19');
 
@@ -64,7 +64,7 @@ If you already have an `<input type="date">` in your Vue form, attach the compan
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue';
-import { MeroMitiCompanion } from '@mero-miti/vue';
+import { MeroMitiCompanion } from '@meromiti/vue';
 
 const nativeInputRef = ref<HTMLInputElement | null>(null);
 </script>

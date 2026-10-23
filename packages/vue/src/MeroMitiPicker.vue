@@ -1,4 +1,4 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 import { ref, watch, onMounted, onBeforeUnmount } from 'vue';
 import {
   BsDate,
@@ -8,10 +8,10 @@ import {
   formatBsDate,
   formatAdDate,
   parseBsDate
-} from '@mero-miti/core';
-import { CalendarPopover } from '@mero-miti/web/calendar-popover';
-import { injectStyles } from '@mero-miti/web/styles';
-import { MERO_MITI_ICON_DATA_URL } from '@mero-miti/web/icons';
+} from '@meromiti/core';
+import { CalendarPopover } from '@meromiti/web/calendar-popover';
+import { injectStyles } from '@meromiti/web/styles';
+import { MERO_MITI_ICON_DATA_URL } from '@meromiti/web/icons';
 
 interface Props {
   modelValue?: string;

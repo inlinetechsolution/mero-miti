@@ -1,5 +1,5 @@
-{
-  "name": "@mero-miti/vue",
+﻿{
+  "name": "@meromiti/vue",
   "version": "1.0.0",
   "description": "Vue 3 date picker component for Mero Miti with v-model and two-way Gregorian synchronization.",
   "main": "src/index.ts",
@@ -21,8 +21,8 @@
     "vue": "^3.2.0"
   },
   "dependencies": {
-    "@mero-miti/core": "workspace:*",
-    "@mero-miti/web": "workspace:*"
+    "@meromiti/core": "^1.0.0",
+    "@meromiti/web": "^1.0.0"
   },
   "keywords": [
     "vue",

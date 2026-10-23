@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import {
   Modal,
   View,
@@ -15,7 +15,7 @@ import {
   NEPALI_MONTHS_NP,
   NEPALI_DAYS_SHORT_NP,
   toNepaliDigits
-} from '@mero-miti/core';
+} from '@meromiti/core';
 
 export interface MeroMitiModalPickerProps {
   visible: boolean;

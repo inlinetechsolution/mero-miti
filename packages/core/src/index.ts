@@ -1,5 +1,5 @@
-/**
- * @mero-miti/core
+﻿/**
+ * @meromiti/core
  * Main entry point for the core calendar and conversion engine
  */
 

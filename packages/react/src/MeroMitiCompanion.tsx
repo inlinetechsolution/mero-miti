@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import { MeroMitiCompanionBridge, CompanionOptions } from '@mero-miti/web/companion-bridge';
+﻿import React, { useEffect, useRef } from 'react';
+import { MeroMitiCompanionBridge, CompanionOptions } from '@meromiti/web/companion-bridge';
 
 export interface MeroMitiCompanionProps extends CompanionOptions {
   targetRef: React.RefObject<HTMLInputElement>;

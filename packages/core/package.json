@@ -1,5 +1,5 @@
-{
-  "name": "@mero-miti/core",
+﻿{
+  "name": "@meromiti/core",
   "version": "1.0.0",
   "description": "Ultra-lightweight (< 1 KB) Bikram Sambat (B.S.) Nepali calendar engine, 24-bit bitmask compression, and AD/BS converter.",
   "main": "src/index.ts",

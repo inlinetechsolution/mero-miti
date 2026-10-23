@@ -1,3 +1,3 @@
-export * from './MeroMitiModalPicker';
+﻿export * from './MeroMitiModalPicker';
 export * from './MeroMitiMobileInput';
-export * from '@mero-miti/core';
+export * from '@meromiti/core';

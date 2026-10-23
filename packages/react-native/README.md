@@ -1,10 +1,10 @@
-<p align="center">
+﻿<p align="center">
   <a href="https://meromiti.com" target="_blank" rel="noopener noreferrer">
     <img src="https://meromiti.com/app-icon.png" width="80" height="80" alt="Mero Miti Logo" style="border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
   </a>
 </p>
 
-# @mero-miti/react-native
+# @meromiti/react-native
 
 > Native Nepali Bikram Sambat (B.S.) Date Picker modal, input, and converter for React Native and Expo.
 >
@@ -15,7 +15,7 @@
 ## 📦 Installation
 
 ```bash
-npm install @mero-miti/react-native @mero-miti/core
+npm install @meromiti/react-native @meromiti/core
 ```
 
 ---
@@ -26,7 +26,7 @@ npm install @mero-miti/react-native @mero-miti/core
 ```tsx
 import React, { useState } from 'react';
 import { View, Button, Text } from 'react-native';
-import { MeroMitiModalPicker } from '@mero-miti/react-native';
+import { MeroMitiModalPicker } from '@meromiti/react-native';
 
 export default function App() {
   const [visible, setVisible] = useState(false);
@@ -55,7 +55,7 @@ export default function App() {
 ### 2. Nepali Date Input Field
 ```tsx
 import React, { useState } from 'react';
-import { MeroMitiMobileInput } from '@mero-miti/react-native';
+import { MeroMitiMobileInput } from '@meromiti/react-native';
 
 <MeroMitiMobileInput
   label="जन्म मिति"

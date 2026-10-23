@@ -1,10 +1,10 @@
-<p align="center">
+﻿<p align="center">
   <a href="https://meromiti.com" target="_blank" rel="noopener noreferrer">
     <img src="https://meromiti.com/app-icon.png" width="80" height="80" alt="Mero Miti Logo" style="border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
   </a>
 </p>
 
-# @mero-miti/core
+# @meromiti/core
 
 > Ultra-lightweight (< 1 KB data), zero-dependency Bikram Sambat (B.S.) Nepali calendar engine, 24-bit bitmask compression, and bidirectional AD $\leftrightarrow$ BS converter.
 >
@@ -15,7 +15,7 @@
 ## 📦 Installation
 
 ```bash
-npm install @mero-miti/core
+npm install @meromiti/core
 ```
 
 ---
@@ -24,7 +24,7 @@ npm install @mero-miti/core
 
 ### 1. Date Conversion
 ```typescript
-import { adToBs, bsToAd } from '@mero-miti/core';
+import { adToBs, bsToAd } from '@meromiti/core';
 
 // Gregorian (AD) to Bikram Sambat (BS)
 const bs = adToBs(new Date(2024, 8, 4));
@@ -37,7 +37,7 @@ const ad = bsToAd({ year: 2081, month: 5, day: 19 });
 
 ### 2. Nepali Fiscal Year (आर्थिक वर्ष) & Quarters
 ```typescript
-import { getFiscalYear, getFiscalYearRange, getFiscalYearQuarters } from '@mero-miti/core';
+import { getFiscalYear, getFiscalYearRange, getFiscalYearQuarters } from '@meromiti/core';
 
 // Current Fiscal Year
 const fy = getFiscalYear();
@@ -54,7 +54,7 @@ const quarters = getFiscalYearQuarters(2081);
 
 ### 3. Formatting & Bilingual Localization
 ```typescript
-import { formatBsDate, toNepaliDigits, toEnglishDigits } from '@mero-miti/core';
+import { formatBsDate, toNepaliDigits, toEnglishDigits } from '@meromiti/core';
 
 formatBsDate({ year: 2081, month: 5, day: 19 }, { format: 'DD/MM/YYYY', numeral: 'en' });
 // => '19/05/2081'
@@ -65,7 +65,7 @@ formatBsDate({ year: 2081, month: 5, day: 19 }, { format: 'DD/MM/YYYY', numeral:
 
 ### 4. Dynamic Year Extension (Future Calendar Support)
 ```typescript
-import { registerYear } from '@mero-miti/core';
+import { registerYear } from '@meromiti/core';
 
 // Register newly published government calendar year dynamically
 registerYear(2095, 'bba445');

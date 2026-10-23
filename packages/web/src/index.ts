@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Mero Miti (मेरो मिति) - Universal Web Bundle
  */
 
@@ -16,7 +16,7 @@ import {
   getFiscalYearQuarters,
   BsDate,
   AdDate
-} from '@mero-miti/core';
+} from '@meromiti/core';
 import { MeroMitiCompanionBridge, CompanionOptions } from './companion-bridge';
 import { injectStyles } from './styles';
 

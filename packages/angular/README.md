@@ -1,10 +1,10 @@
-<p align="center">
+﻿<p align="center">
   <a href="https://meromiti.com" target="_blank" rel="noopener noreferrer">
     <img src="https://meromiti.com/app-icon.png" width="80" height="80" alt="Mero Miti Logo" style="border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
   </a>
 </p>
 
-# Mero Miti Angular (`@mero-miti/angular`)
+# Mero Miti Angular (`@meromiti/angular`)
 
 Official **Mero Miti (मेरो मिति)** date picker and `ControlValueAccessor` component for Angular applications. Integrates seamlessly with **Angular Reactive Forms** (`formControlName`, `[formControl]`) and Template-Driven Forms (`[(ngModel)]`).
 
@@ -13,9 +13,9 @@ Official **Mero Miti (मेरो मिति)** date picker and `ControlValue
 ## 📦 Installation
 
 ```bash
-npm install @mero-miti/angular
+npm install @meromiti/angular
 # or
-pnpm add @mero-miti/angular
+pnpm add @meromiti/angular
 ```
 
 ---
@@ -25,7 +25,7 @@ pnpm add @mero-miti/angular
 ### 1. Import `MeroMitiModule`
 In your `app.module.ts` or standalone component `imports`:
 ```typescript
-import { MeroMitiModule } from '@mero-miti/angular';
+import { MeroMitiModule } from '@meromiti/angular';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({

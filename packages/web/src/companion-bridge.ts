@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Mero Miti Companion Bridge
  * Non-destructive two-way synchronization between vendor Gregorian fields and Mero Miti Nepali fields.
  */
@@ -10,7 +10,7 @@ import {
   formatBsDate,
   formatAdDate,
   FormatOptions
-} from '@mero-miti/core';
+} from '@meromiti/core';
 import { CalendarPopover } from './calendar-popover';
 import { attachInputMask } from './input-mask';
 import { injectStyles } from './styles';

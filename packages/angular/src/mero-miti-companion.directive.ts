@@ -1,4 +1,4 @@
-import {
+﻿import {
   Directive,
   ElementRef,
   Input,
@@ -7,7 +7,7 @@ import {
   Optional
 } from '@angular/core';
 import { NgControl } from '@angular/forms';
-import { MeroMitiCompanionBridge, CompanionOptions } from '@mero-miti/web/companion-bridge';
+import { MeroMitiCompanionBridge, CompanionOptions } from '@meromiti/web/companion-bridge';
 
 @Directive({
   selector: 'input[meroMitiCompanion]'

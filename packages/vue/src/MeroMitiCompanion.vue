@@ -1,6 +1,6 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue';
-import { MeroMitiCompanionBridge, CompanionOptions } from '@mero-miti/web/companion-bridge';
+import { MeroMitiCompanionBridge, CompanionOptions } from '@meromiti/web/companion-bridge';
 
 interface Props extends CompanionOptions {
   target: HTMLInputElement | string;

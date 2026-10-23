@@ -1,3 +1,3 @@
-export * from './MeroMitiPicker';
+﻿export * from './MeroMitiPicker';
 export * from './MeroMitiCompanion';
-export * from '@mero-miti/core';
+export * from '@meromiti/core';

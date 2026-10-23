@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import {
   View,
   Text,
   TouchableOpacity,
   StyleSheet
 } from 'react-native';
-import { BsDate, formatBsDate } from '@mero-miti/core';
+import { BsDate, formatBsDate } from '@meromiti/core';
 import { MeroMitiModalPicker } from './MeroMitiModalPicker';
 
 export interface MeroMitiMobileInputProps {

@@ -1,8 +1,8 @@
-/**
+﻿/**
  * Mero Miti Input Mask & Live Validation
  */
 
-import { parseBsDate, BsDate } from '@mero-miti/core';
+import { parseBsDate, BsDate } from '@meromiti/core';
 
 export interface MaskOptions {
   format?: string;        // 'DD/MM/YYYY' (default), 'DD.MM.YYYY', etc.

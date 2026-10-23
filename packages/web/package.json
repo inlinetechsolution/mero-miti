@@ -1,5 +1,5 @@
-{
-  "name": "@mero-miti/web",
+﻿{
+  "name": "@meromiti/web",
   "version": "1.0.0",
   "description": "Zero-dependency drop-in browser script, modal picker, and companion bridge for Bikram Sambat date picking.",
   "main": "dist/mero-miti.js",
@@ -16,7 +16,7 @@
     "./icons": "./src/icons.ts"
   },
   "dependencies": {
-    "@mero-miti/core": "workspace:*"
+    "@meromiti/core": "^1.0.0"
   },
   "repository": {
     "type": "git",

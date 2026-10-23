@@ -1,4 +1,4 @@
-<p align="center">
+﻿<p align="center">
   <a href="https://meromiti.com" target="_blank" rel="noopener noreferrer">
     <img src="https://meromiti.com/app-icon.png" width="96" height="96" alt="Mero Miti Logo" style="border-radius: 20px; box-shadow: 0 4px 14px rgba(0,0,0,0.15);" />
   </a>
@@ -21,17 +21,17 @@ The **Mero Miti** monorepo organizes packages into three clear tiers:
 ### 1. 🌐 Frontend UI Components
 | Package | Platform / Framework | Directory | Registry | Command |
 | :--- | :--- | :--- | :--- | :--- |
-| **`@mero-miti/core`** | Universal TS/JS Engine | `packages/core` | npm | `npm i @mero-miti/core` |
+| **`@meromiti/core`** | Universal TS/JS Engine | `packages/core` | npm | `npm i @meromiti/core` |
 | **`mero-miti`** | Standalone CDN Bundle | `packages/web` | npm / CDN | `<script src=".../mero-miti.js">` |
-| **`@mero-miti/react`** | React & Next.js | `packages/react` | npm | `npm i @mero-miti/react` |
-| **`@mero-miti/vue`** | Vue 3 & Nuxt (`v-model`) | `packages/vue` | npm | `npm i @mero-miti/vue` |
-| **`@mero-miti/angular`**| Angular (`ReactiveForms`) | `packages/angular` | npm | `npm i @mero-miti/angular` |
+| **`@meromiti/react`** | React & Next.js | `packages/react` | npm | `npm i @meromiti/react` |
+| **`@meromiti/vue`** | Vue 3 & Nuxt (`v-model`) | `packages/vue` | npm | `npm i @meromiti/vue` |
+| **`@meromiti/angular`**| Angular (`ReactiveForms`) | `packages/angular` | npm | `npm i @meromiti/angular` |
 
 ### 2. 📱 Mobile SDKs
 | Package | Platform / Framework | Directory | Registry | Command |
 | :--- | :--- | :--- | :--- | :--- |
 | **`mero_miti`** | Flutter & Dart | `packages/flutter` | pub.dev | `flutter pub add mero_miti` |
-| **`@mero-miti/react-native`** | React Native & Expo | `packages/react-native` | npm | `npm i @mero-miti/react-native` |
+| **`@meromiti/react-native`** | React Native & Expo | `packages/react-native` | npm | `npm i @meromiti/react-native` |
 | **`com.meromiti:android`** | Kotlin & Jetpack Compose | `packages/android` | MavenCentral | `implementation("com.meromiti:android:1.0.0")` |
 | **`MeroMiti`** | Swift & SwiftUI (iOS/macOS) | `packages/ios` | Swift PM | `.package(url: ".../mero-miti", from: "1.0.0")` |
 
@@ -75,7 +75,7 @@ MeroMiti.attach('#dob_field', {
 
 #### 3. React & Next.js
 ```tsx
-import { MeroMitiPicker } from '@mero-miti/react';
+import { MeroMitiPicker } from '@meromiti/react';
 
 <MeroMitiPicker
   value={nepaliDate}
@@ -90,7 +90,7 @@ import { MeroMitiPicker } from '@mero-miti/react';
 ```vue
 <script setup>
 import { ref } from 'vue';
-import { MeroMitiPicker } from '@mero-miti/vue';
+import { MeroMitiPicker } from '@meromiti/vue';
 const nepaliDate = ref('2081/05/19');
 </script>
 
@@ -136,7 +136,7 @@ MeroMitiTextField(
 
 #### 7. React Native & Expo
 ```tsx
-import { MeroMitiMobileInput } from '@mero-miti/react-native';
+import { MeroMitiMobileInput } from '@meromiti/react-native';
 
 <MeroMitiMobileInput
   label="जन्म मिति (B.S.)"

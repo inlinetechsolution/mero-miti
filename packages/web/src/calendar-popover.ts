@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Mero Miti Calendar Popover Component
  */
 
@@ -10,7 +10,7 @@ import {
   NEPALI_MONTHS_NP,
   NEPALI_DAYS_SHORT_NP,
   toNepaliDigits
-} from '@mero-miti/core';
+} from '@meromiti/core';
 import { MERO_MITI_ICON_DATA_URL } from './icons';
 
 export interface PopoverCallbacks {

@@ -1,5 +1,5 @@
-{
-  "name": "@mero-miti/react",
+﻿{
+  "name": "@meromiti/react",
   "version": "1.0.0",
   "description": "React and Next.js Bikram Sambat Nepali date picker components, hooks, and companion bridge.",
   "main": "src/index.ts",
@@ -19,8 +19,8 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@mero-miti/core": "workspace:*",
-    "@mero-miti/web": "workspace:*"
+    "@meromiti/core": "^1.0.0",
+    "@meromiti/web": "^1.0.0"
   },
   "keywords": [
     "react",

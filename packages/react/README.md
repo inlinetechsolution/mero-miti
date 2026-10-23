@@ -1,10 +1,10 @@
-<p align="center">
+﻿<p align="center">
   <a href="https://meromiti.com" target="_blank" rel="noopener noreferrer">
     <img src="https://meromiti.com/app-icon.png" width="80" height="80" alt="Mero Miti Logo" style="border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
   </a>
 </p>
 
-# @mero-miti/react
+# @meromiti/react
 
 > React and Next.js Bikram Sambat (B.S.) Nepali date picker components, hooks, and companion bridge.
 >
@@ -15,7 +15,7 @@
 ## 📦 Installation
 
 ```bash
-npm install @mero-miti/react @mero-miti/core
+npm install @meromiti/react @meromiti/core
 ```
 
 ---
@@ -25,7 +25,7 @@ npm install @mero-miti/react @mero-miti/core
 ### 1. Standalone Nepali Date Picker
 ```tsx
 import React, { useState } from 'react';
-import { MeroMitiPicker } from '@mero-miti/react';
+import { MeroMitiPicker } from '@meromiti/react';
 
 export default function BookingForm() {
   const [bsDate, setBsDate] = useState('2081/05/19');
@@ -50,7 +50,7 @@ export default function BookingForm() {
 ### 2. Companion Bridge (Side-by-side with Existing Gregorian Input)
 ```tsx
 import React, { useState } from 'react';
-import { MeroMitiCompanion } from '@mero-miti/react';
+import { MeroMitiCompanion } from '@meromiti/react';
 
 export default function FormWithCompanion() {
   const [adDate, setAdDate] = useState('2024-09-04');
