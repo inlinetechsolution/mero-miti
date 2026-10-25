@@ -478,31 +478,33 @@
     "}",
     ".mero-miti-companion-wrapper {",
     "  display: inline-flex; flex-direction: column; position: relative; font-family: var(--mm-font);",
-    "  box-sizing: border-box; vertical-align: middle; margin-left: 8px; margin-top: 0; padding: 0;",
+    "  box-sizing: border-box; vertical-align: middle; margin-left: 8px; margin-top: 0; padding: 0; max-width: 100%;",
     "}",
-    ".mero-miti-companion-wrapper.mm-block { display: flex; margin-left: 0; margin-top: 8px; width: 100%; }",
+    ".mero-miti-companion-wrapper.mm-block { display: flex; margin-left: 0; margin-top: 6px; width: 100%; }",
+    ".mero-miti-companion-wrapper.mm-block .mero-miti-input-group { width: 100%; display: flex; }",
     ".mero-miti-label { font-size: 11px; font-weight: 600; color: var(--mm-text-muted); margin-bottom: 4px; display: flex; align-items: center; gap: 4px; }",
     ".mero-miti-input-group {",
     "  display: inline-flex; align-items: center; position: relative; background: var(--mm-bg);",
     "  border: 1px solid var(--mm-border); border-radius: var(--mm-radius); height: 38px;",
     "  box-sizing: border-box; vertical-align: middle; transition: border-color 0.15s ease, box-shadow 0.15s ease;",
+    "  width: 100%; max-width: 100%; cursor: text;",
     "}",
+    ".mero-miti-companion-wrapper:not(.mm-block) .mero-miti-input-group { width: auto; }",
     ".mero-miti-input-group:focus-within { border-color: var(--mm-border-focus); box-shadow: 0 0 0 3px rgba(16,185,129,0.15); }",
     ".mero-miti-input-group.mm-invalid { border-color: var(--mm-danger) !important; animation: mm-shake 0.3s ease-in-out; }",
     "@keyframes mm-shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-4px)} 75%{transform:translateX(4px)} }",
     ".mero-miti-inline-badge {",
     "  font-size: 10px; font-weight: 700; padding: 2px 5px; margin-left: 6px; margin-right: 2px;",
     "  border-radius: 4px; background: var(--mm-primary-light); color: var(--mm-primary);",
-    "  user-select: none; letter-spacing: 0.5px; white-space: nowrap;",
+    "  user-select: none; letter-spacing: 0.5px; white-space: nowrap; flex-shrink: 0;",
     "}",
-    ".mero-miti-input { border: none; background: transparent; padding: 6px 8px; font-size: 14px; color: var(--mm-text); outline: none; width: 105px; font-family: inherit; }",
-    ".mero-miti-icon-btn { background: transparent; border: none; cursor: pointer; padding: 6px 8px; display: flex; align-items: center; justify-content: center; color: var(--mm-text-muted); line-height: 1; border-radius: 4px; }",
-    ".mero-miti-icon-btn:hover { color: var(--mm-primary); }",
-    ".mero-miti-icon-btn { background: transparent; border: none; cursor: pointer; padding: 2px 4px; display: flex; align-items: center; justify-content: center; line-height: 1; border-radius: 4px; transition: opacity 0.15s, transform 0.1s; }",
+    ".mero-miti-input { border: none; background: transparent; padding: 6px 8px; font-size: 14px; color: var(--mm-text); outline: none; flex: 1 1 auto; width: 100%; min-width: 80px; height: 100%; font-family: inherit; box-sizing: border-box; }",
+    ".mero-miti-companion-wrapper:not(.mm-block) .mero-miti-input { width: 110px; flex: 0 0 auto; }",
+    ".mero-miti-icon-btn { background: transparent; border: none; cursor: pointer; padding: 4px 6px; display: flex; align-items: center; justify-content: center; color: var(--mm-text-muted); line-height: 1; border-radius: 4px; flex-shrink: 0; transition: opacity 0.15s, transform 0.1s; }",
     ".mero-miti-icon-btn:hover { opacity: 0.8; transform: scale(1.05); }",
     ".mero-miti-trigger-img { width: 22px; height: 22px; object-fit: contain; display: block; border-radius: 4px; }",
     ".mero-miti-brand-mark { width: 16px; height: 16px; object-fit: contain; display: inline-block; vertical-align: middle; border-radius: 3px; margin-right: 4px; }",
-    ".mero-miti-popover { position: absolute; z-index: 99999; background: var(--mm-card-bg); border: 1px solid var(--mm-border); border-radius: var(--mm-radius); box-shadow: var(--mm-shadow); width: 290px; padding: 12px; box-sizing: border-box; font-family: var(--mm-font); color: var(--mm-text); user-select: none; }",
+    ".mero-miti-popover { position: absolute; z-index: 99999; background: var(--mm-card-bg); border: 1px solid var(--mm-border); border-radius: var(--mm-radius); box-shadow: var(--mm-shadow); width: 290px; max-width: calc(100vw - 20px); padding: 12px; box-sizing: border-box; font-family: var(--mm-font); color: var(--mm-text); user-select: none; }",
     ".mero-miti-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }",
     ".mero-miti-selects { display: flex; gap: 4px; }",
     ".mero-miti-select { background: var(--mm-bg); color: var(--mm-text); border: 1px solid var(--mm-border); border-radius: 4px; padding: 2px 4px; font-size: 13px; outline: none; cursor: pointer; }",
@@ -749,9 +751,27 @@
     this.initialSync();
   }
 
+  MeroMitiCompanionBridge.prototype.isTargetBlock = function () {
+    if (typeof window === 'undefined') return false;
+    var computed = window.getComputedStyle(this.targetInput);
+    if (!computed) return false;
+    if (computed.display === 'block') return true;
+    if (computed.width === '100%') return true;
+    var parent = this.targetInput.parentElement;
+    if (parent) {
+      var parentWidth = parent.getBoundingClientRect().width;
+      var inputWidth = this.targetInput.getBoundingClientRect().width;
+      if (parentWidth > 0 && inputWidth > 0 && (inputWidth / parentWidth) >= 0.82) {
+        return true;
+      }
+    }
+    return false;
+  };
+
   MeroMitiCompanionBridge.prototype.createDom = function () {
+    var isBlock = this.options.position === 'bottom' || this.isTargetBlock();
     var wrapper = document.createElement('div');
-    wrapper.className = 'mero-miti-companion-wrapper ' + (this.options.position === 'bottom' ? 'mm-block' : '');
+    wrapper.className = 'mero-miti-companion-wrapper ' + (isBlock ? 'mm-block' : '');
     wrapper.setAttribute('data-mero-miti-wrapper', 'true');
     wrapper.setAttribute('data-mero-miti-ignore', 'true');
     if (this.options.theme === 'dark') wrapper.classList.add('mero-miti-dark');
@@ -792,16 +812,19 @@
 
   MeroMitiCompanionBridge.prototype.mount = function () {
     this.targetInput.style.verticalAlign = 'middle';
-    var hostEl = (this.targetInput.closest && this.targetInput.closest('.MuiFormControl-root, .form-group, .field-wrapper')) || this.targetInput;
+    var isBlock = this.options.position === 'bottom' || this.isTargetBlock();
+    if (isBlock && !this.container.classList.contains('mm-block')) {
+      this.container.classList.add('mm-block');
+    }
 
-    if (this.options.position === 'bottom') {
-      if (hostEl.nextSibling) {
-        hostEl.parentNode.insertBefore(this.container, hostEl.nextSibling);
+    if (this.options.position === 'bottom' || isBlock) {
+      if (this.targetInput.nextSibling) {
+        this.targetInput.parentNode.insertBefore(this.container, this.targetInput.nextSibling);
       } else {
-        hostEl.parentNode.appendChild(this.container);
+        this.targetInput.parentNode.appendChild(this.container);
       }
     } else {
-      hostEl.insertAdjacentElement('afterend', this.container);
+      this.targetInput.insertAdjacentElement('afterend', this.container);
     }
   };
 
@@ -810,20 +833,30 @@
     var computed = window.getComputedStyle(this.targetInput);
     if (!computed) return;
 
-    if (computed.height && computed.height !== 'auto') {
+    if (computed.height && computed.height !== 'auto' && computed.height !== '0px') {
       this.groupEl.style.height = computed.height;
     }
     if (computed.borderRadius) {
       this.groupEl.style.borderRadius = computed.borderRadius;
     }
-    if (computed.borderColor) {
+    if (computed.borderColor && computed.borderStyle !== 'none') {
       this.groupEl.style.borderColor = computed.borderColor;
     }
     if (computed.fontFamily) {
       this.nepaliInput.style.fontFamily = computed.fontFamily;
+      this.groupEl.style.fontFamily = computed.fontFamily;
     }
     if (computed.fontSize) {
       this.nepaliInput.style.fontSize = computed.fontSize;
+    }
+    if (computed.fontWeight) {
+      this.nepaliInput.style.fontWeight = computed.fontWeight;
+    }
+    if (computed.color && computed.color !== 'rgba(0, 0, 0, 0)' && computed.color !== 'transparent') {
+      this.nepaliInput.style.color = computed.color;
+    }
+    if (computed.backgroundColor && computed.backgroundColor !== 'rgba(0, 0, 0, 0)' && computed.backgroundColor !== 'transparent') {
+      this.groupEl.style.backgroundColor = computed.backgroundColor;
     }
   };
 
@@ -832,6 +865,28 @@
     var format = this.options.format;
     var sepMatch = format.match(/[/.-]/);
     var separator = sepMatch ? sepMatch[0] : '/';
+
+    // 0. Click group focuses input & re-matches styles
+    this.groupEl.addEventListener('click', function (e) {
+      if (e.target !== self.iconBtn && !self.iconBtn.contains(e.target)) {
+        self.nepaliInput.focus();
+      }
+    });
+
+    this.nepaliInput.addEventListener('focus', function () {
+      self.matchTargetStyles();
+    });
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', function () {
+        var isBlock = self.options.position === 'bottom' || self.isTargetBlock();
+        if (isBlock) {
+          self.container.classList.add('mm-block');
+        } else if (self.options.position !== 'bottom') {
+          self.container.classList.remove('mm-block');
+        }
+      });
+    }
 
     // 1. Live Typing & Masking
     this.nepaliInput.addEventListener('input', function () {

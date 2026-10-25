@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Mero Miti Companion Bridge
  * Non-destructive two-way synchronization between vendor Gregorian fields and Mero Miti Nepali fields.
  */
@@ -80,18 +80,73 @@ export class MeroMitiCompanionBridge {
     this.tooltipEl = this.container.querySelector('.mero-miti-tooltip') as HTMLElement;
 
     this.mount();
+    this.matchTargetStyles();
     this.bindEvents();
     this.initialSync();
   }
 
+  private matchTargetStyles(): void {
+    if (typeof window === 'undefined') return;
+    const computed = window.getComputedStyle(this.targetInput);
+    if (!computed) return;
+
+    const groupEl = this.container.querySelector('.mero-miti-input-group') as HTMLElement;
+    if (!groupEl) return;
+
+    if (computed.height && computed.height !== 'auto' && computed.height !== '0px') {
+      groupEl.style.height = computed.height;
+    }
+    if (computed.borderRadius) {
+      groupEl.style.borderRadius = computed.borderRadius;
+    }
+    if (computed.borderColor && computed.borderStyle !== 'none') {
+      groupEl.style.borderColor = computed.borderColor;
+    }
+    if (computed.fontFamily) {
+      this.nepaliInput.style.fontFamily = computed.fontFamily;
+      groupEl.style.fontFamily = computed.fontFamily;
+    }
+    if (computed.fontSize) {
+      this.nepaliInput.style.fontSize = computed.fontSize;
+    }
+    if (computed.fontWeight) {
+      this.nepaliInput.style.fontWeight = computed.fontWeight;
+    }
+    if (computed.color && computed.color !== 'rgba(0, 0, 0, 0)') {
+      this.nepaliInput.style.color = computed.color;
+    }
+    if (computed.backgroundColor && computed.backgroundColor !== 'rgba(0, 0, 0, 0)' && computed.backgroundColor !== 'transparent') {
+      groupEl.style.backgroundColor = computed.backgroundColor;
+    }
+  }
+
+  private isTargetBlock(): boolean {
+    if (typeof window === 'undefined') return false;
+    const computed = window.getComputedStyle(this.targetInput);
+    if (!computed) return false;
+    if (computed.display === 'block') return true;
+    if (computed.width === '100%') return true;
+    const parentWidth = this.targetInput.parentElement?.getBoundingClientRect().width || 0;
+    const inputWidth = this.targetInput.getBoundingClientRect().width || 0;
+    if (parentWidth > 0 && inputWidth > 0 && (inputWidth / parentWidth) >= 0.82) {
+      return true;
+    }
+    return false;
+  }
+
   private createCompanionDom(): HTMLElement {
+    const isBlock = this.options.position === 'bottom' || this.isTargetBlock();
     const wrapper = document.createElement('div');
-    wrapper.className = `mero-miti-companion-wrapper ${this.options.position === 'bottom' ? 'mm-block' : ''}`;
+    wrapper.className = `mero-miti-companion-wrapper ${isBlock ? 'mm-block' : ''}`;
     if (this.options.theme === 'dark') wrapper.classList.add('mero-miti-dark');
 
     const nameAttr = this.options.name ? ` name="${this.options.name}"` : '';
     const disabledAttr = this.targetInput.disabled ? ' disabled' : '';
     const readOnlyAttr = this.targetInput.readOnly ? ' readonly' : '';
+    const badgeText = this.options.locale === 'ne' ? 'वि.सं.' : 'B.S.';
+    const inlineBadgeHtml = this.options.showBadge !== false
+      ? `<span class="mero-miti-inline-badge">${badgeText}</span>`
+      : '';
 
     wrapper.innerHTML = `
       ${this.options.label ? `
@@ -101,6 +156,7 @@ export class MeroMitiCompanionBridge {
         </label>
       ` : ''}
       <div class="mero-miti-input-group">
+        ${inlineBadgeHtml}
         <input 
           type="text"${nameAttr}${disabledAttr}${readOnlyAttr} 
           class="mero-miti-input" 
@@ -120,7 +176,12 @@ export class MeroMitiCompanionBridge {
   }
 
   private mount(): void {
-    if (this.options.position === 'bottom') {
+    const isBlock = this.options.position === 'bottom' || this.isTargetBlock();
+    if (isBlock && !this.container.classList.contains('mm-block')) {
+      this.container.classList.add('mm-block');
+    }
+
+    if (this.options.position === 'bottom' || isBlock) {
       // Insert after the vendor input's parent or immediately next line
       if (this.targetInput.nextSibling) {
         this.targetInput.parentNode?.insertBefore(this.container, this.targetInput.nextSibling);
@@ -148,6 +209,28 @@ export class MeroMitiCompanionBridge {
         this.clearGregorian();
       }
     });
+
+    // Clicking anywhere in the input group focuses the input
+    inputGroup.addEventListener('click', (e: MouseEvent) => {
+      if (e.target !== this.iconBtn && !this.iconBtn.contains(e.target as Node)) {
+        this.nepaliInput.focus();
+      }
+    });
+
+    this.nepaliInput.addEventListener('focus', () => {
+      this.matchTargetStyles();
+    });
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', () => {
+        const isBlock = this.options.position === 'bottom' || this.isTargetBlock();
+        if (isBlock) {
+          this.container.classList.add('mm-block');
+        } else if (this.options.position !== 'bottom') {
+          this.container.classList.remove('mm-block');
+        }
+      });
+    }
 
     // 2. Calendar Popover toggle on icon click
     this.iconBtn.addEventListener('click', (e: MouseEvent) => {

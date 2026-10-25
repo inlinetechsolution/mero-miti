@@ -52,12 +52,13 @@ export const MERO_MITI_STYLES = `
   margin-left: 8px;
   margin-top: 0;
   padding: 0;
+  max-width: 100%;
 }
 
 .mero-miti-companion-wrapper.mm-block {
   display: flex;
   margin-left: 0;
-  margin-top: 8px;
+  margin-top: 6px;
   width: 100%;
 }
 
@@ -83,6 +84,13 @@ export const MERO_MITI_STYLES = `
   box-sizing: border-box;
   vertical-align: middle;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  width: 100%;
+  max-width: 100%;
+  cursor: text;
+}
+
+.mero-miti-companion-wrapper:not(.mm-block) .mero-miti-input-group {
+  width: auto;
 }
 
 .mero-miti-input-group:focus-within {
@@ -114,6 +122,7 @@ export const MERO_MITI_STYLES = `
   user-select: none;
   letter-spacing: 0.5px;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .mero-miti-input {
@@ -124,8 +133,16 @@ export const MERO_MITI_STYLES = `
   color: var(--mm-text);
   outline: none;
   font-family: inherit;
-  width: 105px;
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 80px;
+  height: 100%;
   box-sizing: border-box;
+}
+
+.mero-miti-companion-wrapper:not(.mm-block) .mero-miti-input {
+  width: 110px;
+  flex: 0 0 auto;
 }
 
 .mero-miti-icon-btn {
@@ -137,9 +154,10 @@ export const MERO_MITI_STYLES = `
   align-items: center;
   justify-content: center;
   color: var(--mm-text-muted);
-  transition: color 0.15s ease;
+  transition: color 0.15s ease, transform 0.1s ease;
   border-radius: var(--mm-radius);
   line-height: 1;
+  flex-shrink: 0;
 }
 
 .mero-miti-icon-btn:hover {
@@ -175,6 +193,7 @@ export const MERO_MITI_STYLES = `
   border-radius: var(--mm-radius);
   box-shadow: var(--mm-shadow);
   width: 290px;
+  max-width: calc(100vw - 20px);
   padding: 12px;
   box-sizing: border-box;
   font-family: var(--mm-font);
